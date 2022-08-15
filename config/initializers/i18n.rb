@@ -268,6 +268,9 @@ I18n.send(:extend, Module.new do
   end
 
   def translate(*args)
+    # a = Hash.new
+    # a[:message] = args
+
     set_locale_with_localizer
 
     begin
@@ -278,11 +281,12 @@ I18n.send(:extend, Module.new do
       # window where we're waiting for updated translations. broken as in
       # crashy, not just missing. if that's the case, just fall back to
       # english, rather than asploding
-      key, options = I18nliner::CallHelpers.infer_arguments(args)
+      key, options = I18nliner::CallHelpers.infer_arguments(a)
       raise if (options[:locale] || locale) == default_locale
 
-      super(key, options.merge(locale: default_locale))
+     super(args)#.merge(locale: default_locale))
     end
+    #return {:message=>args}
   end
   alias_method :t, :translate
 
