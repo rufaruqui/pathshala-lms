@@ -26,4 +26,4 @@ require File.expand_path("config/canvas_rails_switcher", __dir__)
 Dir.glob(File.join(File.dirname(__FILE__), "Gemfile.d", "*.rb")).sort.each do |file|
   eval(File.read(file), nil, file) # rubocop:disable Security/Eval
 end
- 
+gem 'smarter_csv'
